@@ -8,6 +8,17 @@
 
 <body>
     Acá estará el contenido de la página web.
+    <button onclick="showContent('about-us')"> About us</button>
+    <button onclick="showContent('contact-us')"> Contact us</button>
+    <template id="about-us">
+        <iframe src="about-us/about-us.html" width="600" height="300"  frameborder="0"></iframe>
+    </template>
+    <template id="contact-us">
+        <iframe src="contact-us/contact-us.html" width="600" height="300"  frameborder="0"></iframe>
+    </template>
+    <div id="container">
+    </div>
 </body>
+<script src="main.js"></script>
 
 </html>
