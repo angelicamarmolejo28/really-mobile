@@ -4,18 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Really Mobile</title>
+    <link rel="stylesheet" href="index.css" />
 </head>
 
 <body>
-    Acá estará el contenido de la página web.
-    <button onclick="showContent('about-us')"> About us</button>
-    <button onclick="showContent('contact-us')"> Contact us</button>
-    <template id="about-us">
-        <iframe src="about-us/about-us.html" width="600" height="300"  frameborder="0"></iframe>
+    <div class="header">
+        <img src="imagenes/logo.png" alt="Logo" height="70" >
+        <h1>Really Mobile</h1>
+    </div>
+    <div class="menu">
+        <div onclick="showContent('servicios')">Servicios </div>
+        <div onclick="showContent('equipos')">Equipos</div>
+        <div onclick="showContent('planes')">Planes</div>
+        <div onclick="showContent('servicio-al-cliente')">Servicio al Cliente</div>
+        <div onclick="showContent('quienes-somos')">¿Quienes somos?</div>
+    
+    </div>
+    <template id="servicio-al-cliente">
+        <iframe src="servicio-al-cliente/servicio-al-cliente.html" width="1024" height="600"  frameborder="0"></iframe>
     </template>
-    <template id="contact-us">
-        <iframe src="contact-us/contact-us.html" width="600" height="300"  frameborder="0"></iframe>
+    <template id="servicios">
+        <iframe src="servicios/servicios.html" width="1024" height="600"  frameborder="0"></iframe>
     </template>
+    <template id="equipos">
+        <iframe src="equipos/equipos.html" width="1024" height="600"  frameborder="0"></iframe>
+    </template>
+    <template id="planes">
+        <iframe src="planes/planes.html" width="1024" height="600"  frameborder="0"></iframe>
+    </template>
+    <template id="quienes-somos">
+            <iframe src="quienes-somos/quienes-somos.html" width="1024" height="600"  frameborder="0"></iframe>
+        </template>
     <div id="container">
     </div>
 </body>

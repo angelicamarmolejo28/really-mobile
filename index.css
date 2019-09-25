@@ -1,0 +1,36 @@
+.menu {
+    display: flex;
+    justify-content: center;
+    background-color: silver;
+}
+.menu > div {
+    background-color: cadetblue;
+   
+    margin: 10px;
+    padding: 5px;
+    text-align: center;
+    font-size: 2em;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  .menu > div:hover {
+    background-color: cornflowerblue;
+    color: grey;
+  }
+  .header {
+    display: flex;
+    height: 100px;
+    align-items: center;
+    background-color: beige;
+  }
+  .header > img,h1 {
+    display: inline-block;
+    margin-left: 15px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(51, 27, 27);
+  }
+  body{
+      margin: 0;
+      padding: 0;
+  }
