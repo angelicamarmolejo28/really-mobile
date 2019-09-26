@@ -1,3 +1,13 @@
-h1{
-    color: chocolate;
-}
+.servicios-contenido {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .servicios-contenido > div {
+    background-color: #dce772;
+    width: 300px;
+    margin: 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1em;
+  }

@@ -4,3 +4,4 @@ function showContent(element) {
     document.getElementById('container').innerHTML = '';
     document.getElementById('container').appendChild(clon);
 }
+showContent('servicios');

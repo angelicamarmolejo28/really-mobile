@@ -34,3 +34,17 @@
       margin: 0;
       padding: 0;
   }
+  footer{
+    width: 100%;
+    height: 50px;;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    background-color: silver;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  footer > div {
+    margin-right: 20px;
+    font-size: 1em;
+  }
