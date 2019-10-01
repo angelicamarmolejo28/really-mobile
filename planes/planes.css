@@ -1,3 +1,17 @@
 h1{
     color: darkgreen; 
 }
+.planes-contenido {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .planes-contenido > div {
+    background-color: greenyellow;
+    width: 380px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1em;
+  }
