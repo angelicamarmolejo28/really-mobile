@@ -5,12 +5,25 @@
     <meta charset="UTF-8">
     <title>Servicios</title>
     <link rel="stylesheet" href="servicios.css" />
+    <link rel="stylesheet" type="text/css" href="../estilos/glider.min.css">
 </head>
 
 <body>
     <h1>
         Servicios
     </h1>
+    <div class="glider-contain" style="width: 80%;">
+        <div class="glider" style="text-align: center;">
+            <div> <img src="imagenes/service1.jpg" height="300px"></div>
+            <div> <img src="imagenes/service2.png" height="300px"></div>
+            <div> <img src="imagenes/service3.jpg" height="300px"></div>
+            <div> <img src="imagenes/service4.jpg" height="300px"></div>
+        </div>
+
+        <button role="button" aria-label="Previous" class="glider-prev">«</button>
+        <button role="button" aria-label="Next" class="glider-next">»</button>
+        <div role="tablist" class="dots"></div>
+    </div>
     <div class="servicios-contenido">
         <div>
             Servicios móviles
@@ -55,6 +68,8 @@
             </div>
         </div>
     </div>
+    <script src="../scripts/glider.min.js"></script>
+    <script src="servicios.js"></script>
 </body>
 
 </html>
