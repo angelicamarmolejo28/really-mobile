@@ -1,0 +1,9 @@
+{
+    "name": "programacionweb/really-mobile-api",
+    "type": "project",
+    "require": {
+        "slim/slim": "^4.3",
+        "slim/http": "^0.8.0",
+        "slim/psr7": "^0.6.0"
+    }
+}
