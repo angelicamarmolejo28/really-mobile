@@ -4,7 +4,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 // Instantiate App
 $app = AppFactory::create();
@@ -12,7 +12,7 @@ $app = AppFactory::create();
 // Add error middleware
 $app->addErrorMiddleware(true, true, true);
 
-$app->options('/{routes:.+}', function ($request, $response, $args) {
+$app->options('/api/{routes:.+}', function ($request, $response, $args) {
     return $response;
 });
 
@@ -25,7 +25,7 @@ $app->add(function ($request, $handler) {
 });
 
 // Add routes
-$app->post('/personas/evaluar', function (Request $request, Response $response) {
+$app->post('/api/personas/evaluar', function (Request $request, Response $response) {
     $body = $request->getBody();
     $res      = json_decode($body);
     $res->descuento = 0;
@@ -58,7 +58,7 @@ $app->post('/personas/evaluar', function (Request $request, Response $response) 
     return $response;
 });
 
-$app->post('/empresas/evaluar', function (Request $request, Response $response) {
+$app->post('/api/empresas/evaluar', function (Request $request, Response $response) {
     $body = $request->getBody();
     $res      = json_decode($body);
     $res->descuento = 0;

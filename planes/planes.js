@@ -6,7 +6,7 @@ function cotizarPersonas() {
         moviles: validarCheck('personasMoviles'),
         television: validarCheck('personasTelevision')
     }
-    fetch(`http://localhost:8080/personas/evaluar`, {
+    fetch(`http://localhost/api/personas/evaluar`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -31,7 +31,7 @@ function cotizarEmpresas() {
         moviles: validarCheck('empresasMoviles'),
         television: validarCheck('empresasTelevision')
     }
-    fetch(`http://localhost:8080/empresas/evaluar`, {
+    fetch(`http://localhost/api/empresas/evaluar`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
