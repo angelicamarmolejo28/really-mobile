@@ -1,13 +1,18 @@
+h1{
+    color: darkgreen; 
+}
+
 .servicios-contenido {
     display: flex;
     justify-content: space-around;
-  }
-  
-  .servicios-contenido > div {
-    background-color: #dce772;
+}
+
+.servicios-contenido>div {
+    background-color: #dcfbdc;
     width: 300px;
     margin: 10px;
+    padding: 15px;;
     border-radius: 10px;
     text-align: center;
     font-size: 1em;
-  }
+}

@@ -3,9 +3,10 @@
     justify-content: center;
     background-color: silver;
 }
-.menu > div {
+
+.menu>div {
     background-color: cadetblue;
-   
+
     margin: 10px;
     padding: 5px;
     text-align: center;
@@ -13,44 +14,53 @@
     color: white;
     cursor: pointer;
     border-radius: 10px;
-  }
-  .menu > div:hover {
+}
+
+.menu>div:hover {
     background-color: cornflowerblue;
     color: grey;
-  }
-  .header {
+}
+
+.header {
     display: flex;
     height: 100px;
     align-items: center;
     background-color: beige;
-  }
-  .header > img,h1 {
+}
+
+.header>img,
+h1 {
     display: inline-block;
     margin-left: 15px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: rgb(51, 27, 27);
-  }
-  body{
-      margin: 0;
-      padding: 0;
-  }
-  footer{
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+footer {
     width: 100%;
-    height: 50px;;
+    height: 25px;
     position: fixed;
     bottom: 0;
     display: flex;
     background-color: silver;
     justify-content: flex-end;
     align-items: center;
-  }
-  footer > div {
+}
+
+footer>div {
     margin-right: 20px;
     font-size: 1em;
-  }
-  iframe{
+}
+
+iframe {
     height: 90vh;
-  }
-#container{
-  margin-bottom: 35px;
+}
+
+#container {
+    margin-bottom: 55px;
 }
