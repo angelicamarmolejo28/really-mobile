@@ -35,9 +35,13 @@ if (datos.descuento > 0) {
     valorDescuento = parseInt(valorSinDescuento * (datos.descuento / 100));
     valorConDescuento = parseInt(valorSinDescuento * (1 - datos.descuento / 100));
 }
+valorDescuento = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(valorDescuento);
+valorConDescuento = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(valorConDescuento);
+valorSinDescuento = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(valorSinDescuento);
+
 document.getElementById('cantidad').appendChild(document.createTextNode(datos.cantidad));
 document.getElementById('tipoCliente').appendChild(document.createTextNode(datos.tipo));
 document.getElementById('descuento').appendChild(document.createTextNode(`${datos.descuento}%`));
-document.getElementById('valorSinDescuento').appendChild(document.createTextNode(`$${valorSinDescuento}`));
-document.getElementById('valorDescuento').appendChild(document.createTextNode(`$${valorDescuento}`));
-document.getElementById('valorConDescuento').appendChild(document.createTextNode(`$${valorConDescuento}`));
+document.getElementById('valorSinDescuento').appendChild(document.createTextNode(`${valorSinDescuento}`));
+document.getElementById('valorDescuento').appendChild(document.createTextNode(`${valorDescuento}`));
+document.getElementById('valorConDescuento').appendChild(document.createTextNode(`${valorConDescuento}`));
