@@ -1,20 +1,26 @@
 h1 {
-  color: darkgreen;
+    color: darkgreen;
 }
 
 .planes-contenido {
-  display: flex;
-  justify-content: space-around;
+    display: flex;
+    justify-content: space-around;
 }
 
 .planes-contenido>div {
-  background-color: greenyellow;
-  margin: 10px;
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 1em;
+    background-color: #dcfbdc;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1em;
 }
 
-.width50{
-  width: 50%;
+.width50 {
+    width: 50%;
+}
+button{
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
 }
