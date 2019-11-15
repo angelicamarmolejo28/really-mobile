@@ -5,14 +5,14 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 
 require __DIR__ . '/vendor/autoload.php';
+require_once('db.php');
 
 // Instantiate App
 $app = AppFactory::create();
-
 // Add error middleware
 $app->addErrorMiddleware(true, true, true);
 
-$app->options('/api/{routes:.+}', function ($request, $response, $args) {
+$app->options('/really-mobile/api/{routes:.+}', function ($request, $response, $args) {
     return $response;
 });
 
@@ -24,8 +24,63 @@ $app->add(function ($request, $handler) {
             ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
 });
 
+$app->get('/really-mobile/api/users', function (Request $request, Response $response) {
+    $tipo = $request->getQueryParam('tipo');
+    $codigo = $request->getQueryParam('codigo');
+    $db = new Db();
+    $data = json_encode($db->encontrarUsuario($tipo, $codigo));
+    $response->getBody()->write($data);
+    return $response;
+});
+
+$app->post('/really-mobile/api/users', function (Request $request, Response $response) {
+    $body = $request->getBody();
+    $res      = json_decode($body);
+
+    if($res->tipo && $res->codigo && $res->nombre){
+        $db = new Db();
+        $data = json_encode($db->crearUsuario($res->tipo, $res->codigo, $res->nombre));
+        $response->getBody()->write($data);
+    } else {
+        $response->getBody()->write(null);
+    }
+
+    return $response;
+});
+
+$app->put('/really-mobile/api/users/{id}', function (Request $request, Response $response) {
+    $route = $request->getAttribute('route');
+    $usuarioId = $route->getArgument('id');
+    $body = $request->getBody();
+    $res      = json_decode($body);
+
+    if($usuarioId && $res->tipo && $res->codigo && $res->nombre){
+        $db = new Db();
+        $data = json_encode($db->actualizarUsuario($usuarioId, $res->tipo, $res->codigo, $res->nombre));
+        $response->getBody()->write($data);
+    } else {
+        $response->getBody()->write(null);
+    }
+
+    return $response;
+});
+
+$app->delete('/really-mobile/api/users/{id}', function (Request $request, Response $response) {
+    $route = $request->getAttribute('route');
+    $usuarioId = $route->getArgument('id');
+    if($usuarioId){
+        $db = new Db();
+        $data = json_encode($db->eliminarUsuario($usuarioId));
+        $response->getBody()->write($data);
+    } else {
+        $response->getBody()->write(null);
+    }
+
+    return $response;
+});
+
 // Add routes
-$app->post('/api/personas/evaluar', function (Request $request, Response $response) {
+$app->post('/really-mobile/api/personas/evaluar', function (Request $request, Response $response) {
     $body = $request->getBody();
     $res      = json_decode($body);
     $res->descuento = 0;
@@ -58,7 +113,7 @@ $app->post('/api/personas/evaluar', function (Request $request, Response $respon
     return $response;
 });
 
-$app->post('/api/empresas/evaluar', function (Request $request, Response $response) {
+$app->post('/really-mobile/api/empresas/evaluar', function (Request $request, Response $response) {
     $body = $request->getBody();
     $res      = json_decode($body);
     $res->descuento = 0;

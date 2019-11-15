@@ -1,3 +1,5 @@
+const url = "http://localhost/really-mobile/api";
+
 function cotizarPersonas() {
     let formulario = {
         tipo: 'personas',
@@ -6,18 +8,18 @@ function cotizarPersonas() {
         moviles: validarCheck('personasMoviles'),
         television: validarCheck('personasTelevision')
     }
-    fetch(`http://localhost/api/personas/evaluar`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formulario)
-    })
+    fetch(`${url}/personas/evaluar`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formulario)
+        })
         .then(response => response.json())
         .then(cotizacion => {
-            if (typeof (Storage) !== "undefined") {
+            if (typeof(Storage) !== "undefined") {
                 localStorage.cotizacion = JSON.stringify(cotizacion);
-                window.location.pathname = '../cotizacion/cotizacion.html';
+                window.location.pathname = './really-mobile/cotizacion/cotizacion.html';
             }
         })
         .catch(error => { throw error });
@@ -31,16 +33,16 @@ function cotizarEmpresas() {
         moviles: validarCheck('empresasMoviles'),
         television: validarCheck('empresasTelevision')
     }
-    fetch(`http://localhost/api/empresas/evaluar`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formulario)
-    })
+    fetch(`${url}/empresas/evaluar`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formulario)
+        })
         .then(response => response.json())
         .then(cotizacion => {
-            if (typeof (Storage) !== "undefined") {
+            if (typeof(Storage) !== "undefined") {
                 localStorage.cotizacion = JSON.stringify(cotizacion);
                 window.location.pathname = '../cotizacion/cotizacion.html';
             }
