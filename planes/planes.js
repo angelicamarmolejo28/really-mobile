@@ -1,4 +1,4 @@
-const url = "http://localhost/really-mobile/api";
+const url = "http://localhost/api";
 
 function cotizarPersonas() {
     let formulario = {
@@ -9,17 +9,17 @@ function cotizarPersonas() {
         television: validarCheck('personasTelevision')
     }
     fetch(`${url}/personas/evaluar`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formulario)
-        })
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formulario)
+    })
         .then(response => response.json())
         .then(cotizacion => {
-            if (typeof(Storage) !== "undefined") {
+            if (typeof (Storage) !== "undefined") {
                 localStorage.cotizacion = JSON.stringify(cotizacion);
-                window.location.pathname = './really-mobile/cotizacion/cotizacion.html';
+                window.location.pathname = './cotizacion/cotizacion.html';
             }
         })
         .catch(error => { throw error });
@@ -34,15 +34,15 @@ function cotizarEmpresas() {
         television: validarCheck('empresasTelevision')
     }
     fetch(`${url}/empresas/evaluar`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formulario)
-        })
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formulario)
+    })
         .then(response => response.json())
         .then(cotizacion => {
-            if (typeof(Storage) !== "undefined") {
+            if (typeof (Storage) !== "undefined") {
                 localStorage.cotizacion = JSON.stringify(cotizacion);
                 window.location.pathname = '../cotizacion/cotizacion.html';
             }
@@ -65,4 +65,30 @@ function validarCheck(nombreCampo) {
         }
     }
     return { nombre: '', valor: 0 };
+}
+
+document.getElementById('container').innerHTML = '';
+let usuario = null;
+if (localStorage.usuario) {
+    usuario = JSON.parse(localStorage.usuario);
+}
+
+if (usuario) {
+    if (usuario.tipo === 'CC') {
+        let personas = document.getElementById('personas');
+        let clonPersonas = personas.content.cloneNode(true);
+        document.getElementById('container').appendChild(clonPersonas);
+    } else {
+        let empresas = document.getElementById('empresas');
+        let clonEmpresas = empresas.content.cloneNode(true);
+        document.getElementById('container').appendChild(clonEmpresas);
+    }
+} else {
+    let personas = document.getElementById('personas');
+    let empresas = document.getElementById('empresas');
+    let clonPersonas = personas.content.cloneNode(true);
+    let clonEmpresas = empresas.content.cloneNode(true);
+
+    document.getElementById('container').appendChild(clonPersonas);
+    document.getElementById('container').appendChild(clonEmpresas);
 }

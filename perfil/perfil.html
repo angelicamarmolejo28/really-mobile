@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>About us</title>
+    <link rel="stylesheet" href="perfil.css" />
+</head>
+
+<body>
+    <div class="perfil">
+        <h1>
+            Mi Perfil
+        </h1>
+        <template id="servicios">
+            <h3>Servicios contratados</h3>
+            <lu id="lista"></lu>
+            <p>Cantidad de servicios contratados: <span id="cantidad"></span></p>
+            <p>Porcentaje de descuento: <span id="descuento"></span></p>
+            <p>Total valor servicios: <span id="valorSinDescuento"></span></p>
+            <p>Valor descuento: <span id="valorDescuento"></span></p>
+            <p>Total a pagar: <span id="valorConDescuento"></span></p>
+        </template>
+        <template id="sinDatos">
+            <div>
+                <h3>
+                    Si ya está registrado, puede identificarse aquí
+                </h3>
+                <p>
+                    Identificación: <br />
+                    <input type="radio" id="identificacionCC" name="tipoIdentificacionAcceder" value="CC"> <label
+                        for="identificacionCC">CC</label> <br>
+                    <input type="radio" id="identificacionNIT" name="tipoIdentificacionAcceder" value="NIT"> <label
+                        for="identificacionNIT"> NIT</label><br>
+                </p>
+                <input id="identificacionIngresar" type="text"><br />
+                <button onclick="identificarse()">Identificarse</button>
+            </div>
+            <div>
+                <h3>
+                    Si no está registrado, por favor hacerlo
+                </h3>
+                Nombre: <input id="nombre" type="text"> <br />
+                <p>
+                    Identificación: <br />
+                    <input type="radio" id="registrarCC" name="tipoIdentificacionRegistrar" value="CC"> <label
+                        for="registrarCC">CC</label> <br>
+                    <input type="radio" id="registrarNIT" name="tipoIdentificacionRegistrar" value="NIT"> <label
+                        for="registrarNIT"> NIT</label><br>
+                </p>
+                Número: <input id="registrarIdentificacion" type="text"><br />
+                <button onclick="registrarse()">Registrarse</button>
+            </div>
+        </template>
+        <template id="conDatos">
+            <div>
+                <h3>
+                    Bienvenido <span id="nombreCliente"></span>
+                </h3>
+                Tipo de Identificación: <span id="tipoIdentificacion"></span><br />
+                Número Identificación: <span id="numeroIdentificacion"></span><br />
+                <button onclick="cerrarSesion()">cerrar sesion</button>
+                <button onclick="editarUsuario()">Editar</button>
+                <button onclick="borrarUsuario()">Borrar</button>
+            </div>
+        </template>
+        <template id=editarForm>
+            <div>
+                <h3>
+                    Editar Usuario
+                </h3>
+                Nombre: <input id="nombreEditar" type="text"> <br />
+                <p>
+                    Identificación: <br />
+                    <input type="radio" id="registrarCCEditar" name="tipoIdentificacionEditar" value="CC"> <label
+                        for="registrarCCEditar">CC</label> <br>
+                    <input type="radio" id="registrarNITEditar" name="tipoIdentificacionEditar" value="NIT"> <label
+                        for="registrarNITEditar"> NIT</label><br>
+                </p>
+                Número: <input id="editarNumero" type="text"><br />
+                <button onclick="guardarUsuario()">Guardar</button>
+                <button onclick="cancelarUsuario()">Cancelar</button>
+            </div>
+            <div>
+                <h4>Actualizar Servicios contratados</h4>
+                <button onclick="irPlanes()">Ir a Planes</button>
+            </div>
+        </template>
+        <div id="container">
+        </div>
+        <div id="contenedor">
+        </div>
+    </div>
+    <script src="perfil.js"></script>
+</body>
+
+</html>
