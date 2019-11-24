@@ -10,7 +10,7 @@ class Db {
 	function __construct() {
 		$this->servername = "127.0.0.1";
 		$this->username = "root";
-        $this->password = "qwe123456";
+        $this->password = "";
         // Create connection
         $this->conn = new mysqli($this->servername, $this->username, $this->password);
 

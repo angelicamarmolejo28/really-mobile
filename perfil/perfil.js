@@ -192,15 +192,20 @@ function guardarUsuario() {
             }
         }
     }
-    let formulario = {
-        nombre,
-        codigo,
-        tipo
-    };
     let usuario = null;
+    let servicios = '';
     if (localStorage.usuario) {
         usuario = JSON.parse(localStorage.usuario);
     }
+    if(usuario.servicios){
+        servicios = usuario.servicios;
+    }
+    let formulario = {
+        nombre,
+        codigo,
+        tipo,
+        servicios
+    };
 
     if (usuario && usuario.id) {
         fetch(`${url}/users/${usuario.id}`, {
