@@ -5,10 +5,10 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 
 require __DIR__ . '/vendor/autoload.php';
+require_once('db.php');
 
 // Instantiate App
 $app = AppFactory::create();
-
 // Add error middleware
 $app->addErrorMiddleware(true, true, true);
 
@@ -22,6 +22,70 @@ $app->add(function ($request, $handler) {
             ->withHeader('Access-Control-Allow-Origin', '*')
             ->withHeader('Access-Control-Allow-Headers', 'Content-Type, Accept, Origin, Authorization')
             ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+});
+
+$app->get('/api/users', function (Request $request, Response $response) {
+    $tipo = $request->getQueryParam('tipo');
+    $codigo = $request->getQueryParam('codigo');
+    $db = new Db();
+    $data = json_encode($db->encontrarUsuario($tipo, $codigo));
+    $response->getBody()->write($data);
+    return $response;
+});
+
+$app->get('/api/users/{id}', function (Request $request, Response $response) {
+    $route = $request->getAttribute('route');
+    $usuarioId = $route->getArgument('id');
+    $db = new Db();
+    $data = json_encode($db->encontrarUsuarioConId($usuarioId));
+    $response->getBody()->write($data);
+    return $response;
+});
+
+$app->post('/api/users', function (Request $request, Response $response) {
+    $body = $request->getBody();
+    $res      = json_decode($body);
+
+    if($res->tipo && $res->codigo && $res->nombre){
+        $db = new Db();
+        $data = json_encode($db->crearUsuario($res->tipo, $res->codigo, $res->nombre));
+        $response->getBody()->write($data);
+    } else {
+        $response->getBody()->write(null);
+    }
+
+    return $response;
+});
+
+$app->put('/api/users/{id}', function (Request $request, Response $response) {
+    $route = $request->getAttribute('route');
+    $usuarioId = $route->getArgument('id');
+    $body = $request->getBody();
+    $res      = json_decode($body);
+
+    if($usuarioId && $res->tipo && $res->codigo && $res->nombre){
+        $db = new Db();
+        $data = json_encode($db->actualizarUsuario($usuarioId, $res->tipo, $res->codigo, $res->nombre, $res->servicios));
+        $response->getBody()->write($data);
+    } else {
+        $response->getBody()->write(null);
+    }
+
+    return $response;
+});
+
+$app->delete('/api/users/{id}', function (Request $request, Response $response) {
+    $route = $request->getAttribute('route');
+    $usuarioId = $route->getArgument('id');
+    if($usuarioId){
+        $db = new Db();
+        $data = json_encode($db->eliminarUsuario($usuarioId));
+        $response->getBody()->write($data);
+    } else {
+        $response->getBody()->write(null);
+    }
+
+    return $response;
 });
 
 // Add routes

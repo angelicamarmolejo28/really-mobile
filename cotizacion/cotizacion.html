@@ -22,6 +22,38 @@
         <p>Total valor servicios: <span id="valorSinDescuento"></span></p>
         <p>Valor descuento: <span id="valorDescuento"></span></p>
         <p>Total a pagar: <span id="valorConDescuento"></span></p>
+        <template id="sinDatos">
+            <div>
+                <h3>
+                    Si está registrado, por favor ingresar y contratar
+                </h3>
+                Identificación: <span id="tipoIdentificacionIngresarYContratar"></span><br />
+                <input id="identifiacionIngresarYContratar" type="text"><br />
+                <button onclick="ingresarYContratar()">Contratar</button>
+            </div>
+            <div>
+                <h3>
+                    Si no está registrado, por favor hacerlo
+                </h3>
+                Nombre: <input id="nombre" type="text"> <br />
+                Identificación: <span id="tipoIdentificacionRegistrarYContratar"></span> <br />
+                <input id="registrarIdentificacion" type="text"><br />
+                <button onclick="registrarYContratar()">Registrar y Contratar</button>
+            </div>
+        </template>
+        <template id="conDatos">
+            <div>
+                <h3>
+                    Cliente: <span id="nombreCliente"></span>
+                </h3>
+                Tipo de Identificación: <span id="tipoIdentificacion"></span><br />
+                Número Identificación: <span id="numeroIdentificacion"></span><br />
+                <button onclick="contratar()">Contratar</button>
+            </div>
+        </template>
+        <div id="container">
+
+        </div>
     </div>
     <script src="cotizacion.js"></script>
 </body>
